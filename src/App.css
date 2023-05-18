@@ -16,6 +16,31 @@ h1 {
 
 .restart-button {
   margin-top: 20px;
-  visibility: hidden; /* Isso torna o botão invisível, mas ainda ocupa espaço no layout */
+  visibility: hidden; /* This makes the button invisible but it still takes up space in the layout */
+  background-color: #61dafb; /* Background color */
+  border: none; /* Removes the border */
+  color: white; /* Text color */
+  padding: 15px 32px; /* Padding around the text */
+  text-align: center; /* Center the text */
+  text-decoration: none; /* Removes the underline */
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s; /* Duration of the transition */
+  cursor: pointer; /* Changes the cursor when you hover over the button */
+  border-radius: 12px; /* Rounded borders */
+}
+
+.restart-button:hover {
+  background-color: white; /* Background color when you hover over the button */
+  color: #61dafb; /* Text color when you hover over the button */
+}
+
+.restart-button.visible {
+  visibility: visible; /* This makes the button visible when there is a winner */
+}
+
+.visible {
+  visibility: visible;
 }
 

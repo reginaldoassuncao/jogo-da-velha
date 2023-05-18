@@ -5,7 +5,7 @@ const style = {
   display: 'grid',
   gridTemplate: 'repeat(3, 1fr) / repeat(3, 1fr)',
   gap: '0',
-  maxWidth: '180px',
+  maxWidth: '240px', // was 180px
   margin: '20px auto'
 };
 

@@ -41,7 +41,7 @@ const Game = () => {
       <div style={style}>
         {winner ? `Winner: ${winner}` : `Next Player: ${xIsNext ? 'X' : 'O'}`}
       </div>
-      {winner && <button onClick={restartGame} style={{ marginTop: '20px' }}>Reiniciar Jogo</button>}
+      <button onClick={restartGame} className={`restart-button ${winner ? 'visible' : ''}`}>Reiniciar Jogo</button>
     </div>
   );
 };
