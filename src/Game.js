@@ -32,6 +32,15 @@ const Game = () => {
     setXIsNext(true);
   };
 
+  const isBoardFull = (squares) => {
+    for (let i = 0; i < squares.length; i++) {
+      if (squares[i] == null) {
+        return false;
+      }
+    }
+    return true;
+  };
+
   const current = history[stepNumber];
   const winner = calculateWinner(current);
 
@@ -39,9 +48,9 @@ const Game = () => {
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       <Board squares={current} onClick={handleClick} />
       <div style={style}>
-        {winner ? `Winner: ${winner}` : `Next Player: ${xIsNext ? 'X' : 'O'}`}
+        {winner ? `Vencedor: ${winner}` : isBoardFull(current) ? 'Empate' : `Próximo Jogador: ${xIsNext ? 'X' : 'O'}`}
       </div>
-      <button onClick={restartGame} className={`restart-button ${winner ? 'visible' : ''}`}>Reiniciar Jogo</button>
+      <button onClick={restartGame} className={`restart-button ${winner || isBoardFull(current) ? 'visible' : ''}`}>Reiniciar Jogo</button>
     </div>
   );
 };
