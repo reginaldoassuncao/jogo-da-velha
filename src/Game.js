@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Board from './Board';
 
 const style = {
@@ -12,6 +12,21 @@ const Game = () => {
   const [history, setHistory] = useState([Array(9).fill(null)]);
   const [stepNumber, setStepNumber] = useState(0);
   const [xIsNext, setXIsNext] = useState(true);
+  const [seconds, setSeconds] = useState(0);
+
+  useEffect(() => {
+    let interval = null;
+
+    if (calculateWinner(history[stepNumber]) || isBoardFull(history[stepNumber])) {
+      clearInterval(interval);
+    } else {
+      interval = setInterval(() => {
+        setSeconds(seconds => seconds + 1);
+      }, 1000);
+    }
+
+    return () => clearInterval(interval);
+  }, [history, stepNumber]);
 
   const handleClick = (i) => {
     const historyPoint = history.slice(0, stepNumber + 1);
@@ -30,6 +45,7 @@ const Game = () => {
     setHistory([Array(9).fill(null)]);
     setStepNumber(0);
     setXIsNext(true);
+    setSeconds(0); // Reset the timer
   };
 
   const isBoardFull = (squares) => {
@@ -49,6 +65,9 @@ const Game = () => {
       <Board squares={current} onClick={handleClick} />
       <div style={style}>
         {winner ? `Vencedor: ${winner}` : isBoardFull(current) ? 'Empate' : `Próximo Jogador: ${xIsNext ? 'X' : 'O'}`}
+      </div>
+      <div style={style}>
+        {`Tempo de jogo: ${Math.floor(seconds / 60)}:${seconds % 60 < 10 ? '0' + (seconds % 60) : seconds % 60}`}
       </div>
       <button onClick={restartGame} className={`restart-button ${winner || isBoardFull(current) ? 'visible' : ''}`}>Reiniciar Jogo</button>
     </div>
