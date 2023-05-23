@@ -58,11 +58,13 @@ const Game = () => {
   };
 
   const current = history[stepNumber];
-  const winner = calculateWinner(current);
+  const winnerInfo = calculateWinner(current);
+  const winner = winnerInfo ? winnerInfo.winner : null;
+  const winningLine = winnerInfo ? winnerInfo.line : [];
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-      <Board squares={current} onClick={handleClick} />
+      <Board squares={current} onClick={handleClick} winningLine={winningLine} />
       <div style={style}>
         {winner ? `Vencedor: ${winner}` : isBoardFull(current) ? 'Empate' : `Próximo Jogador: ${xIsNext ? 'X' : 'O'}`}
       </div>
@@ -88,7 +90,7 @@ function calculateWinner(squares) {
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i];
     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-      return squares[a];
+      return { winner: squares[a], line: lines[i] };
     }
   }
   return null;

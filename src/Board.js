@@ -10,10 +10,15 @@ const style = {
 };
 
 
-const Board = ({ squares, onClick }) => (
+const Board = ({ squares, onClick, winningLine }) => (
   <div style={style}>
     {squares.map((value, i) => (
-      <Square key={i} value={value} onClick={() => onClick(i)} />
+      <Square
+        key={i}
+        value={value}
+        onClick={() => onClick(i)}
+        highlight={winningLine && winningLine.includes(i)}
+      />
     ))}
   </div>
 );
