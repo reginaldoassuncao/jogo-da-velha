@@ -14,10 +14,15 @@ const style = {
   background: 'white'
 };
 
-const Square = ({ value, onClick, highlight }) => (
-  <button style={{...style, background: highlight ? 'lightgreen' : 'white'}} onClick={onClick}>
+const Square = ({ value, onClick, highlight, row, col }) => (
+  <button
+    style={{...style, background: highlight ? 'lightgreen' : 'white'}}
+    onClick={onClick}
+    aria-label={`Square at row ${row}, column ${col}`}
+  >
     {value}
   </button>
 );
+
 
 export default Square;
