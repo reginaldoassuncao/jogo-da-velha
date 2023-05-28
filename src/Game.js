@@ -4,8 +4,10 @@ import Board from './Board';
 const style = {
   marginTop: '20px',
   fontSize: '20px',
-  fontWeight: 'bold',
-  textAlign: 'center'
+  fontWeight: 600,
+  textAlign: 'center',
+  color: 'white',
+  textShadow: '1px 1px 2px rgba(0, 0, 0, 0.5)',
 };
 
 const Game = () => {

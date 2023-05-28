@@ -7,40 +7,39 @@
   background-color: #282c34;
 }
 
-h1 {
+.title {
   color: #61dafb;
-  margin-bottom: 20px;
   font-size: 2em;
+  margin-bottom: 20px;
   text-align: center;
 }
 
 .restart-button {
   margin-top: 20px;
-  visibility: hidden; /* This makes the button invisible but it still takes up space in the layout */
-  background-color: #61dafb; /* Background color */
-  border: none; /* Removes the border */
-  color: white; /* Text color */
-  padding: 15px 32px; /* Padding around the text */
-  text-align: center; /* Center the text */
-  text-decoration: none; /* Removes the underline */
+  visibility: hidden;
+  background-color: #61dafb;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
   display: inline-block;
   font-size: 16px;
   margin: 4px 2px;
-  transition-duration: 0.4s; /* Duration of the transition */
-  cursor: pointer; /* Changes the cursor when you hover over the button */
-  border-radius: 12px; /* Rounded borders */
+  transition: background-color 0.4s ease, color 0.4s ease;
+  cursor: pointer;
+  border-radius: 12px;
 }
 
 .restart-button:hover {
-  background-color: white; /* Background color when you hover over the button */
-  color: #61dafb; /* Text color when you hover over the button */
+  background-color: white;
+  color: #61dafb;
 }
 
 .restart-button.visible {
-  visibility: visible; /* This makes the button visible when there is a winner */
+  visibility: visible;
 }
 
 .visible {
   visibility: visible;
 }
-
